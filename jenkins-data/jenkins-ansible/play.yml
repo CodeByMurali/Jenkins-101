@@ -1,3 +1,0 @@
-- hosts: test1
-  tasks:
-    - shell: echo Hello world > /tmp/ansible-file
