@@ -1,0 +1,22 @@
+Started by user [8mha:////4JsVlGoX+LWDP5V7uqdRDaGMGGCJJAX0piSJ49sG0KA6AAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyBEgZu/dLi1CL9xJTczDwAS4B5WsAAAAA=[0mMurali Rajendran
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/BackUp-MySQL-AWS
+[SSH] script:
+MYSQL_HOST="db_host"
+AWS_SECRET_KEY=**********
+MYSQL_PASSWORD=**********
+DATABASE_NAME="testdb"
+AWS_BUCKET_NAME="jenkins-mysql-backup-murali"
+
+/tmp/mysql_backup_script.sh $MYSQL_HOST $MYSQL_PASSWORD $DATABASE_NAME $AWS_SECRET_KEY $AWS_BUCKET_NAME
+
+[SSH] executing...
+
+The user-provided path /tmp/db.sql does not exist.
+Uploading your db backup
+
+[SSH] completed
+[SSH] exit-status: 255
+
+Build step 'Execute shell script on remote host using ssh' marked build as failure
+Finished: FAILURE

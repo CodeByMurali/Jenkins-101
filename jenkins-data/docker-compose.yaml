@@ -1,0 +1,48 @@
+version: '3'
+services:
+# Jenkins contianer
+  jenkins:
+    container_name: jenkins
+    image: jenkins-ansible
+    build:
+    #jenkins-ansible is the directory name of where the jenkins ansible docker file resides
+      context: jenkins-ansible
+    ports:
+      - "8080:8080"
+    volumes:
+      - $PWD/jenkins_home:/var/jenkins_home
+    networks:
+      - net
+# Jenkins remote host
+  remote_host:
+    container_name: remote-host
+    image: remote-host
+    build:
+    #centos is the folder name that contains the image details
+      context: centos7
+    volumes:
+      - "$PWD/mysql_backup_script.sh:/tmp/mysql_backup_script.sh"
+    networks:
+      - net
+  # MySQL
+  db_host:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=1234"
+    volumes:
+      - "$PWD/db_data:/var/lib/mysql"
+    networks:
+      - net
+  # php service
+  web:
+    container_name: web
+    image: ansible-web
+    build:
+      context: jenkins-ansible/web
+    ports:
+      - "80:80"
+    networks:
+      - net
+networks:
+  net:
